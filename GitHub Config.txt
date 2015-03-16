@@ -1,4 +1,4 @@
-How to config your local env GitHub.
+﻿How to config your local env GitHub.
 
 1. SetUp your Git install file on your PC. and register an account for GitHub on https://github.com
 
@@ -47,6 +47,39 @@ How to config your local env GitHub.
   l access.
   
   it means your configuration is OK.  can connect with GitHub successfully.
+
+
+ 5 Create  your VCS(version control system)
+   a)
+   $ make dir testprj  #testprj is your project name.
+   $ cd testprj        # change directory to your project. 
+   $ pwd               # print your current directory.
+
+   b)initialize your VCS by command 'git init'
+   $ git init
+   it will print out:
+   Initalized empty Git repository in  '.../testprj/.git/'
+   
+   .git directory is Git repository. 
+
+   c) Create a new repository on GitHub.
+
+   d) create/modfiy/delete/rename a file in your VCS.
+     example:  
+     touch README  #create a file named README.
+     git add README   #add README to cache.
+     git commit -m 'first commit commenet' #commit your file to local repository with comment'
+
+ 6 Sync your local file with GitHub.
+     git remote add testprj https://github.com/ankailiu/testprj.git
+
+
+    git pull -u testprj master          
+    git push -u testprj master
+
+   		 
+
+   
 
   
   
