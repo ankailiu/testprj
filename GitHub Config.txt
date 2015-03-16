@@ -91,8 +91,94 @@ git clone git://github.com/ankailiu/testprj.git  /d/myproject     # clone an exi
 
 
 
+$git init git_basis
+$git status          #view staging area commit log.
+$cd git_basis/
+example: 
 
-Get more in the later.
+$touch a 
+$touch b
+$git add a b
+$git status
+
+new file: a
+new file: b
+$git commit -m "initial commit a,b file"
+create mode 100644 a
+create mode 100644 b
+
+$git rm a     # remove file a from  working and staging area.
+rm 'a'    
+ls  #only b file is existed.
+
+$git reset HEAD a    # reset a file to previous status.
+$ls  #only file b is list.
+$git checkout a    #checkout file a.
+$ls  #list file  a & b.
+
+$git rm --cache a   # only remove file a from staging area  but not remove it from workign area.
+$git status 
+untracked files:
+a                  # file a is not tracked,need to be committed.
+
+$git mv a c 
+$git status 
+renamed:    a -->c    # rename file a  to c.
+
+
+
+
+
+***************************** git usage ******************
+a)
+$git init --bare git_bare_repo           #create a bare git warehouse named 'git_bare_repo' (not with working area)
+$cd git_bare_repo/
+
+b) make an existing file which need to be managed by git.
+method 1:
+$makedir git_init_repo   #a common folder 'git_init_repo'.
+$cd git_init_repo
+$git init git_init_repo   #make folder 'git_init_repo' managed by git.
+
+method 2:
+$git clone git_bare_repo/    git_clone_repo     
+#clone a git warehouse 'git_bare_repo'(remote address) to 'git_clone_repo'(local address, eg: 'd:/test/').
+
+
+
+
+
+
+
+
+
+
+
+//*************************************.gitignore usage **********************************
+$vim .gitignore    #open .gitignore and edit file.
+
+a) 
+*.[oa]      #end with o or a files will not be able to add into git warehouse.
+
+b)
+!test.pyc   #to exclude ignored file which is end with '*.pyc'.(test.pyc will not be ignored.)
+
+c)
+\!test.pyc    #make test.pyc managed by git.
+
+d)
+foo/    # foo is a directory. 
+        # If there is a file named foo, it will not be mananged.
+        
+e)
+**/res   # '**/' means 0 or multiple directory.   name with res's sub directory or parent directory 
+
+
+
+
+
+
+
   
   
   
