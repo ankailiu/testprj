@@ -81,6 +81,13 @@
 
    
 
+
+
+
+********************************************
+Clone an existing cvs into your PC.
+
+git clone git://github.com/ankailiu/testprj.git  /d/myproject     # clone an existing project in GitHub to your assigned path.
   
   
   
