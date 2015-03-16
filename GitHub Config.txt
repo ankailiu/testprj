@@ -33,7 +33,7 @@
   
   c) to test whether your configuration is OK.
   type command like in bash like: 
-  sssh -T git@github.com
+  ssh -T git@github.com
   
   then you may promte with a warning.
   Ankai Liu@SHA-LRI-PC- /D/testprj (master)
