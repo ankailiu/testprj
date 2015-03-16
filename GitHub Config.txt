@@ -1,6 +1,6 @@
 ﻿How to config your local env GitHub.
 
-1. SetUp your Git install file on your PC. and register an account for GitHub on https://github.com
+1. SetUp your Git install file on your PC and register an account for GitHub on https://github.com
 
 2. Config your GitHub.
    in the cmd line, type the command below:
