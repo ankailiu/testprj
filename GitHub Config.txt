@@ -300,6 +300,13 @@ $git rm --cached test.txt
 
 $git blame filename	谁创建了或者是修改了这个文件
 
+o)
+git log --oneline --decorate --graph --all  #历史示意图
+git show tagname    #tag包含的提交信息
+git checkout -b branchnmae  # git branch & git checkout 切换到一个新的分支上去工作。
+git stash clear
+git stash list
+
 
 
 
