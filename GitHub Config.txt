@@ -197,9 +197,25 @@ $git reset incorrect.txt  #Remove it from the index.
 $rm incorrect.txt   #remove it from working area.
 
 i) 
-git checkout HEAD -- your_dir_to_restore        #Restore a directory which are deleted from repo
+git checkout HEAD -- your_dir_to_restore        #Restore a directory which are deleted from commit(but not from remote)
+# Have a test,but seems not work.
 
 
+j)
+#If you remove a file which is under version control. 'git add .' command will not put this file in index, we need to 
+use 'git add -A .' command instead to put it in index. and recommit & push.
+$mkdir testdir 
+$cd testdir
+$touch test001
+$git add .      
+$git commit -m 'commit testdir and its file'
+$git push -u testprj master          #create a file and push it to remote.
+
+$git add -A .
+$git commit -m 'remove testdir'  #recommit
+$git push -u testprj master      #push successfully.
+
+k)
 
 
 
