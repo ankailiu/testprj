@@ -127,6 +127,29 @@ renamed:    a -->c    # rename file a  to c.
 
 
 
+*****************************git configuration**********************
+1. Configure your username and email.
+$git config --global user.name "Example username"
+$git config --global user.email "ankailiu@163.com"
+# Set default so that all changes are always pushed to the repo
+$git config --global push.default "matching" 
+
+2. Get the Git configure info.
+$git config --list
+
+3. Highlight your git terminal.
+$git config --global color.status auto
+$git config --global color.branch auto
+
+4. 
+Use .gitkeep to track your empty directory. (Git ignore empty direcotry)
+core.excludesfile to config your global ignoring files.
+
+
+
+
+
+
 
 
 ***************************** git usage ******************
@@ -143,6 +166,40 @@ $git init git_init_repo   #make folder 'git_init_repo' managed by git.
 method 2:
 $git clone git_bare_repo/    git_clone_repo     
 #clone a git warehouse 'git_bare_repo'(remote address) to 'git_clone_repo'(local address, eg: 'd:/test/').
+
+c)
+git diff          #list diff changes of files.
+
+d)
+git log          #list git commit history log.
+gitk --all       #git log tree.
+
+e)
+git commit -m "message"  #commit with comment.
+git commit --amend -m  "revise last comment message"  # update the last commit comment.
+
+f)
+git remote     #show the existing defined remote repositories.
+
+g)git checkout commit_name
+# Copy one of the older commits and checkout the older version.
+# if no comit_name, will revert to the last commit point.
+
+or you can
+
+git revert commit_name
+git reset HEAD test01    #Restore a file in the staging index.
+
+h) git reset file_name to remove a file from  index.
+$touch incorrect.txt
+$git add .   #Accidently add it to the index.
+$git reset incorrect.txt  #Remove it from the index.
+$rm incorrect.txt   #remove it from working area.
+
+i) 
+git checkout HEAD -- your_dir_to_restore        #Restore a directory which are deleted from repo
+
+
 
 
 
