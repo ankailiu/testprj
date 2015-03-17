@@ -1,0 +1,180 @@
+$git init git_checkout_merge
+$cd git_checkout_merge/
+$vim master.txt
+$git add .
+$git commit -m "Initial commit on master"
+
+$vim master.txt
+$git add .
+$git commit -m "Second commit on master"
+
+
+$git branch test
+$git checkout test
+
+$git_checkout_merge (test) $vim master.txt
+(test *) $touch test.txt
+(test)$git add .
+(test)$git commit -m "Initial commit on test"
+
+
+
+(test)$ git checkout master    #switched back to master
+$ls   #no test.txt 
+
+
+
+
+tag  
+1.lightweight  本地tag ， 2.annoated tag
+$git log --oneline --decorate --graph -all
+*  16e9316 (test) Initial commit on test
+*  ffeab0c (HEAD,master) second commit on master
+*  a1aba30 Initial commit on master
+
+(master) $ git tag "v0" a1aba30   # HEAD 指向master 分支上的commit
+
+（master）$ git tag -a "INITIAL_COMMIT"   alaba30    #Anotated tag. 
+# 这里会提示输入tag信息对话框。
+
+(master) $git tag  # 查看当前有什么tag
+INITAL_COMMIT
+vo
+
+(master) $ git log --oneline --decorate -graph -all
+*  16e9316 (test) Initial commit on test
+*  ffeab0c (HEAD,master) second commit on master
+*  a1aba30 (tag: v0, tag:INITIAL_COMMIT) Initial commit on master
+
+(master) $git config --global alias.lol "log --oneline --decorate --graph --all"   #配置别名
+$git lol 
+*  16e9316 (test) Initial commit on test
+*  ffeab0c (HEAD,master) second commit on master
+*  a1aba30 (tag: v0, tag:INITIAL_COMMIT) Initial commit on master
+
+
+(master) $ git show v0
+
+
+(master) $git show INITIAL_COMMIT
+
+
+(master) git checkout v0
+# in 'detached HEAD' state.  HEAD引用指向了一次提交，如果继续在上面工作，切回到其他分支的时候
+这部分的历史可能就被丢弃掉了。
+
+#git checkout -b new_branch_name  == git branch new_branch_name + git checkout new_branch_name
+
+git_checkout_merge ((INITIAL_COMMIT))$ git checkout -b fix_v0
+Switched to a new branch 'fix_v0'
+
+
+git_checkout_merge (fix_v0)$  vim master.txt
+(fix_v0 *) git add .
+(fix_v0 ) git checkout master
+
+error ::your local changes to the following files would be overwrittern by checkout:
+       master.txt
+Please, commit your changes or stash them before you can switch branches.
+Aborting.
+
+
+
+(fix_v0)$  git stash save -a "stash1" #保存暂存区
+saved working directory and index state on fix_v0: stash1
+HEAD is now at a1aba30 Initial commit on master
+
+(fix_v0)$ git status
+on branch fix_v0
+nothing to commit, working directory clean
+
+(fix_v0) $git checkout master
+switched to branch 'master'
+
+(master) $git checkout fix_v0
+switched to branch 'fxi_v0'
+
+(fix_v0)$ git stash list
+stash@{0}: on fix_v0:stash1
+
+
+(fix_v0)$ git stash pop --index stash@{0}   #还原暂存区
+modified：master.txt
+
+
+(fix_v0)$ git stash list
+nothing
+
+(fix_v0)$ git stash save -a  "stash1'
+(fix_v0)$ git stash list
+stash@{0}: On fix_v0: stash1
+
+(fix_v0)$ git stash apply --index stash@{0} 
+(fix_v0)$ git stash list
+stash@{0}: On fix_v0: stash1
+
+(fix_v0)$ git stash drop stash@{0}
+被删除了。
+
+$git stash clear   清理多个stash
+
+
+
+
+$git stash save 
+
+把分支上的工作合并到我需要的分支上面。
+
+(fix_v0) $git checkout master 
+Switched to branch 'master'
+
+$git_checkout_merge (master) ::git checkout -b test_merge
+
+(test_merge) $ vim master.txt
+
+(test_merge) $ git add .
+(test_merge) $ git comit -m "Initial comit on test_merge"
+(test_merge) $ git lol
+
+
+
+(test_merge) $ git checkout master
+(master)$ git merge test_merge    #将test_merge 上的工作merge到master 上。
+Fast-forward merge
+将masster 指向test_merge 上的状态
+
+（master) git merge test
+Auto-merging master.txt
+Automatic merge fail.ed : fix confilict and then commit the result.
+
+1(master*) $git merge --abort  放弃合并。
+
+
+2继续合并
+(master) $ vim master.txt #合并解决冲突
+then commit 
+
+
+
+
+总结。
+所谓分支就是HEAD引用的切换
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
