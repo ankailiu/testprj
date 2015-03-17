@@ -216,6 +216,89 @@ $git commit -m 'remove testdir'  #recommit
 $git push -u testprj master      #push successfully.
 
 k)
+$git tag version1.6 -m 'version 1.1'   //generates a tag with comment 'version1.1'
+$git checkout version1.1       //restore to version1.1.
+
+l)
+$git branch   #list branches, current branch will be promoted with '*'
+$git branch -a  # list all remote branches.
+
+# Syntax: git branch <name> <hash>
+# <hash> in the above is optional 
+# if not specified the last commit will be used
+# If specified the corresponding commit will be used
+$git branch testing
+# Switch to your new branch
+$git checkout testing
+# Some changes
+echo "Cool new feature in this branch" > test01
+$git commit -a -m "new feature"
+# Switch to the master branch
+$git checkout master
+# Check that the content of test01 is the old one
+cat test01
+
+#Merge
+$git merge testing
+
+#Delete branch testing
+$git branch -d testing
+# Check if branch has been deleted
+$git branch
+
+
+#Push../
+# Push testing branch to remote repository
+$git push origin testing
+
+# Switch to the testing branch
+$git checkout testing
+
+# Some changes
+echo "News for you" > test01
+$git commit -a -m "new feature in branch"
+
+# Push all including branch
+$git push
+
+
+m)
+Rebase
+
+# Create a new file
+$touch rebase.txt
+
+# Add it to git
+$git add . && git commit -m "rebase.txt added to index"
+
+# Do some silly changes and commit
+$echo "content" >> rebase.txt
+$git add . && git commit -m "added content"
+$echo " more content" >> rebase.txt
+$git add . && git commit -m "added more content"
+$echo " more content" >> rebase.txt
+$git add . && git commit -m "added more content"
+$echo " more content" >> rebase.txt
+$git add . && git commit -m "added more content"
+$echo " more content" >> rebase.txt
+$git add . && git commit -m "added more content"
+$echo " more content" >> rebase.txt
+$git add . && git commit -m "added more content"
+
+# Check the git log message
+$git log
+
+n)
+放弃跟踪文件
+有时候，你不希望某些文件或者文件夹被包含在Git仓库中。但是如果你把它们加到.gitignore文件中以后，Git会停止跟踪这个文件。但是它不会将这个文件从仓库中删除。这导致了文件或者文件夹的最后一个版本还是存在于仓库中。为了取消跟踪这些文件或者文件夹，你可以使用如下的命令
+
+# Remove directory .metadata from git repo
+$git rm -r --cached .metadata
+# Remove file test.txt from repo
+$git rm --cached test.txt
+这样做不会将这些文件从commit历史中去掉。如果你想将这些文件从commit历史中去掉，可以参考git filter-branch命令
+
+$git blame filename	谁创建了或者是修改了这个文件
 
 
 
