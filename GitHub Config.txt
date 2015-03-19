@@ -127,6 +127,19 @@ renamed:    a -->c    # rename file a  to c.
 
 
 
+
+
+
+
+$git checkout -b feature //在当前默认分支上创建一个分支feature
+$vim test1.txt
+$git add test1.txt
+$git commit -m "add teest1.txt"
+$git push origin feature  把feature分支推送到默认分支上 在github上就多了一个feature分支啦。。。
+
+
+
+
 *****************************git configuration**********************
 1. Configure your username and email.
 $git config --global user.name "Example username"
