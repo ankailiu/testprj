@@ -355,6 +355,73 @@ e)
 
 
 
+
+
+
+
+git checkout 还原工作区
+git reset 还原暂存区
+git clean 还没有被跟踪的文件
+git revert 用新的提交覆盖之前的提交
+
+$git checkout -- master.txt  撤销工作区master.txt 的修改。（用暂存区的内容覆盖工作区的内容）
+$git reset (HEAD) master.txt  (HEAD)如果就在暂存区可以省略。 还原暂存区master.txt 的内容 ,还原到工作区的状态即没有被添加到暂存区之前。
+
+
+
+$git checkout INITIAL_COMMIT -- master.txt 用某个历史提交还原工作区和暂存区
+$git reset INITIAL_COMMIT -- master.txt 只还原暂存区，不还原工作区，工作区依然是老样子
+
+$git diff --cached 查看暂存区和工作区的比较。
+
+
+
+git clean #清楚还没有被跟踪的工作区文件。 
+
+$touch test.1 test.2
+$git clean -n   显示将要删除的文件
+would remove test.1 
+would remove test.2
+
+
+(git clean 默认不清理gitignore里面配置的文件)
+若要清理需要加参数为 x)
+git clean -x -f 清理所有，忽略gitignore里配置的文件
+
+
+git clean -f  强制删除 test.1 test.2
+removing test.1 
+removing test.2
+
+
+git reset  --hard 还原工作区和暂存区
+git reset  --mixed 还原暂存区
+git reset  --soft    不还原工作区和暂存区
+
+
+
+
+
+git pull 实际上是 git fetch 和 git merge 的合并
+
+提交tag
+
+git push --tags  
+
+
+
+
+clone from github
+
+$目录
+$git clone https://github.com/ankailiu1/testprj.git
+
+
+
+
+
+
+
   
   
   
